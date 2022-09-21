@@ -2,7 +2,7 @@ import React from "react";
 
 export default function TodoInput() {
   return (
-    <div className="mt-5">
+    <div className="mt-5 w-75 mx-auto">
       <h3 className="text-capitalize text-center fw-bolder">TodoInput</h3>
       <div className="card card-body my-3 w-75 mx-auto">
         <form>

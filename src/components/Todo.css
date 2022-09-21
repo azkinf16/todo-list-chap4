@@ -1,0 +1,12 @@
+.btn-primary {
+    background-color: #16A3B5 !important;
+    border: none !important;
+}
+
+.btn-primary:hover {
+    background-color: #1b8593 !important;
+}
+
+.icon {
+    cursor: pointer;
+}

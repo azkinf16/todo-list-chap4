@@ -2,6 +2,7 @@ import React from "react";
 
 import TodoSearch from "./components/TodoSearch";
 import TodoList from "./components/TodoList";
+import "./components/Todo.css"
 
 function App() {
   return (

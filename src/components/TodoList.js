@@ -1,8 +1,9 @@
 import React from "react";
+import TodoItems from "./TodoItems";
 
 export default function TodoList() {
   return (
-    <>
+    <div className="mb-5">
       <h3 className="text-capitalize text-center fw-semibold">TodoList</h3>
       <div className="d-flex w-75 mx-auto mt-4 justify-content-between">
         <button
@@ -24,6 +25,9 @@ export default function TodoList() {
           Todo
         </button>
       </div>
+      <div className="w-75 mx-auto mt-4">
+        <TodoItems />
+      </div>
       <div className="d-flex w-75 mx-auto mt-4 justify-content-between">
         <button
           type="submit"
@@ -38,6 +42,6 @@ export default function TodoList() {
           Delete all tasks
         </button>
       </div>
-    </>
+    </div>
   );
 }
