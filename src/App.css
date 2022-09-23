@@ -1,0 +1,21 @@
+.btn-primary {
+  background-color: #16a3b5 !important;
+  border: none !important;
+}
+
+.btn-primary:hover {
+  background-color: #1b8593 !important;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.complete {
+  text-decoration: line-through;
+  color: rgb(172, 167, 167);
+}
+
+.disabled {
+  pointer-events: none;
+}

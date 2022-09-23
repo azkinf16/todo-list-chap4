@@ -2,9 +2,11 @@ import React from "react";
 
 import TodoSearch from "./components/TodoSearch";
 import TodoList from "./components/TodoList";
-import "./components/Todo.css"
+
+import "./App.css"
 
 function App() {
+  
   return (
     <div className="container">
       <div className="row">

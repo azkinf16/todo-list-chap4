@@ -13,7 +13,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}/>
-        <Route path="TodoInput" element={<TodoInput />}/>
+        <Route path="/TodoInput" element={<TodoInput />}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
