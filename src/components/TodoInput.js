@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 
 export default function TodoInput() {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const onInputChange = (e) => {
     setInput(e.target.value);
@@ -13,19 +14,36 @@ export default function TodoInput() {
   const onFormSubmit = (e) => {
     e.preventDefault();
 
-    
-    const data = {
-      id: Math.floor(Math.random() * 1000),
-      task: input,
-      complete: false,
-    };
-
-    axios.post(`http://localhost:3004/datas`, data).then(() => {
-      navigate("/")
-    })
-
-    setInput("");
-
+    if (!input) {
+      alert("belum measukan data");
+    } else if (id) {
+      const datas = {
+        task: input,
+      };
+      axios
+        .patch(`http://localhost:3004/datas/${id}`, datas)
+        .then((res) => {
+          navigate("/");
+        })
+        .catch((err) => {
+          return err.message;
+        });
+    } else {
+      const datas = {
+        id: Math.floor(Math.random() * 10000),
+        task: input,
+        complete: false
+      };
+      axios
+        .post((`http://localhost:3004/datas`), datas)
+        .then((res) => {
+          navigate("/");
+        })
+        .catch((err) => {
+          return err.message;
+        });
+      setInput("");
+    }
   };
 
   return (

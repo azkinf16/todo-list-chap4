@@ -14,6 +14,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}/>
         <Route path="/TodoInput" element={<TodoInput />}/>
+        <Route path="/TodoInput/:id" element={<TodoInput />}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

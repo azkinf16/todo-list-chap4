@@ -3,15 +3,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function TodoItems() {
-
-
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
   const getData = async () => {
     try {
       const datas = await axios.get(`http://localhost:3004/datas`);
-      if (datas.data) {       
+      if (datas.data) {
         setData(datas.data);
       }
       console.log(datas);
@@ -29,35 +27,19 @@ export default function TodoItems() {
       getData();
     });
 
-
-
-      const dataNew = data.filter((item) => item.id !== id);
-      setData(dataNew);
+    const dataNew = data.filter((item) => item.id !== id);
+    setData(dataNew);
   };
 
-  const handleDoneTask = (id, complete) => {
-
-    // const datas = {
-    //   ...data, complete: !complete
-    // }
-
-    // console.log(datas);
-
-    // axios.put(`http://localhost:3004/datas/${id}`, datas).then(()=> {
-    //   getData();
-    // })
-
-    const filteredItems = data.map((item) => {
+  const handleDoneTask = (id) => {
+    data.map((item) => {
       if (item.id === id) {
-        return { ...item, complete: !item.complete };
+        item.complete = item.complete = !item.complete;
+        axios.patch(`http://localhost:3004/datas/${id}`, item).then(() => {
+          getData();
+        });
       }
-      return item;
     });
-    setData(filteredItems);
-  };
-
-  const editItem = (id) => {
-    navigate("/TodoInput");
   };
 
   return (
@@ -81,7 +63,9 @@ export default function TodoItems() {
                 >
                   <i
                     className={`${
-                      item.complete ? "far fa-check-square icon" : "far fa-square icon"
+                      item.complete
+                        ? "far fa-check-square icon"
+                        : "far fa-square icon"
                     }`}
                   />
                 </span>
@@ -89,9 +73,9 @@ export default function TodoItems() {
                   className={`mx-2 text-warning ${
                     item.complete ? "disabled" : ""
                   }`}
-                  onClick={() => editItem(item.id)}
+                  onClick={() => navigate(`/TodoInput/:${item.id}`)}
                 >
-                  <i className="fa fa-pen icon"/>
+                  <i className="fa fa-pen icon" />
                 </span>
                 <span
                   className="mx-2 pe-2 text-danger"
